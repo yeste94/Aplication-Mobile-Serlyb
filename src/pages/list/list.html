@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalle Vivienda</ion-title>
+
+<ion-buttons right>
+      <button (click)="enviar()" ion-button icon-only><ion-icon name="send"></ion-icon></button>
+    </ion-buttons>
+
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+	<div *ngIf="respuesta">
+
+	<ion-card>
+  		<ion-card-header>
+    		{{vivienda.UR}}
+  		</ion-card-header>
+  		<ion-card-content>
+    		<label>Direción: </label>{{vivienda.Direccion}}<br>
+    		<label>Población: </label>{{vivienda.Poblacion}}<br>
+    		<label>Provincia: </label>{{vivienda.Provincia}}<br>
+  		</ion-card-content>
+	</ion-card>
+
+
+<!-- Foto Antes -->
+	<ion-card>
+		<button  (click)="getPicture_antes()" ion-button round>Añadir Foto Antes</button>
+			<!-- <img id="imagen" *ngFor="let i of images_antes" src="data:image/jpg;base64,{{i}}" width="50" height="50"/> -->
+
+    <ion-grid >
+      <ion-row>
+        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let i of images_antes">
+          <div class="image-container" >
+            <img id="imagen" src="data:image/jpg;base64,{{i}}"/> 
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+	</ion-card>
+
+
+
+<!-- Foto Después -->
+	<ion-card>
+		<button  (click)="getPicture_despues()" ion-button round>Añadir Foto Después</button>
+		<ion-grid >
+      <ion-row>
+        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let i of images_despues">
+          <div class="image-container" >
+            <img id="imagen" src="data:image/jpg;base64,{{i}}"/> 
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+	</ion-card>
+
+
+<ion-card>
+  		<ion-item>
+  			<ion-label>Terminado</ion-label>
+  			<ion-checkbox  [(ngModel)]="terminado" color="blue" checked="false"></ion-checkbox>
+		</ion-item>
+
+		<ion-item>
+  			<ion-label>Finalizado</ion-label>
+  			<ion-checkbox [(ngModel)]="finalizado"  color="blue" checked="false"></ion-checkbox>
+		</ion-item>
+ 
+
+</ion-card>
+<ion-card>
+  		<ion-textarea [(ngModel)]="faltado"  placeholder="faltado...."></ion-textarea>
+</ion-card>
+
+  		<!-- Aqui iriía el mapa -->
+<div id="map_canvas"></div>
+
+</div>
+
+
+<ion-fab right bottom>
+	<button ion-fab color="primary" (click)="addTrabajadorVivienda()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+</ion-content>

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the ModelTrabajadorViviendaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Añadir trabajdor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<label>Fecha: </label>
+<input [(ngModel)]="date" type="date" name="fecha">
+
+
+<ion-item>
+  <ion-label>Trabajadores</ion-label>
+  <ion-select [(ngModel)]="toppings" multiple="true" (ionChange)="onSelectChange($event)" >
+    <ion-option *ngFor="let t of trabajadores">{{t.id}} {{t.nombre}}</ion-option>
+
+  </ion-select>
+</ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons end>
+      <button (click)='EnviarLista(date.value)' ion-button icon-right color="royal">
+        Enviar
+        <ion-icon name="send" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
