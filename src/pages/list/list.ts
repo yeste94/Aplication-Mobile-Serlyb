@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NavController, NavParams,ModalController,Platform } from 'ionic-angular';
+import { NavController, NavParams,ModalController,Platform, AlertController  } from 'ionic-angular';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
 import {ViviendaServiceProvider} from '../../providers/vivienda-service/vivienda-service';
@@ -42,7 +42,8 @@ export class ListPage {
               private http: Http,
               private platform: Platform,
               public loadingCtrl: LoadingController,
-              private toastCtrl: ToastController
+              private toastCtrl: ToastController,
+              private alertCtrl: AlertController
               ) {
 
     this.platform.ready().then( () =>{
@@ -213,6 +214,32 @@ presentToast(mensaje:string) {
   toast.present();
 }
 
+
+
+longPress(index:number){
+    let alert = this.alertCtrl.create({
+    title: 'Borrar imagen',
+    message: '¿Quieres borrar la imagen?'+index,
+    buttons: [
+      {
+        text: 'NO',
+        role: 'NO',
+        handler: () => {
+          console.log('Cancel clicked');
+
+        }
+      },
+      {
+        text: 'SI',
+        handler: () => {
+          console.log('Buy clicked');
+          this.images_antes.splice(index,1);
+        }
+      }
+    ]
+  });
+  alert.present(); 
+}
 
 
 }

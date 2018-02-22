@@ -52,7 +52,9 @@ export class HomePage {
   }
 
 
-
+longPress(){
+  console.log('Mantenido pulsado');
+}
 
 
 }
